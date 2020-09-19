@@ -5,14 +5,14 @@ alias py2="python2 "
 alias ipy="ipython "
 alias :q='exit'
 alias rm="rm -i "
-alias ls="lsd "
-alias l="lsd "
-alias ll="lsd -l --blocks permission,user,size,name "
-alias la="lsd -la --blocks permission,user,size,name "
-alias su="sudo su "
+# alias ls="lsd "
+# alias l="lsd "
+# alias ll="lsd -l --blocks permission,user,size,name "
+# alias la="lsd -la --blocks permission,user,size,name "
+# alias su="sudo su "
 alias open="xdg-open "
 
-if [ $USER = "selz" ] ; then alias pacman="pikaur " ; fi
+# if [ $USER = "selz" ] ; then alias pacman="pikaur " ; fi
 
 alias conf-env="vi ~/.config/zsh/.zshenv"
 alias conf-alias="vi ~/.config/zsh/alias"

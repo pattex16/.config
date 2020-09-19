@@ -74,19 +74,23 @@ source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/plugins/zsh-github-cli-completion.zsh
 # source ~/.config/zsh/plugins/zsh-ddgr-completion.zsh
-source "/usr/share/doc/pkgfile/command-not-found.zsh"
+# source "/usr/share/doc/pkgfile/command-not-found.zsh"
 
-if [ -z $TMUX ] && [ $USER = "selz" ] ; then exec tmux; fi
+[[ -z $TMUX ]] && tmux
 
 autoload -Uz compinit
 compinit -d ~/.cache/zsh/.zcompdump
-kitty + complete setup zsh | source /dev/stdin
+# kitty + complete setup zsh | source /dev/stdin
 setopt promptsubst
 
 local hostname_short=$(hostname | cut -c -5)
 
-if [ $USER = "root" ] ; then PROMPT='%B%F{red}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
-else ; PROMPT='%B%F{green}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
-fi ;
+if [[ $USER = "root" ]]
+then
+  PROMPT='%B%F{red}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
+else
+  PROMPT='%B%F{green}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
+fi
 
-export TERM="kitty"
+# export TERM="kitty"
+
