@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/selz/.config/bspwm'
+let g:netrw_dirhist_3='/home/selz/.config'
+let g:netrw_dirhist_2='/home/selz/picom/man'
+let g:netrw_dirhist_1='/home/selz/.config/bspwm'

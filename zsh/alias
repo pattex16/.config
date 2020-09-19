@@ -1,0 +1,35 @@
+#vi:syntax=sh
+alias ra="ranger "
+alias py="python "
+alias py2="python2 "
+alias ipy="ipython "
+alias :q='exit'
+alias rm="rm -i "
+alias ls="lsd "
+alias l="lsd "
+alias ll="lsd -l --blocks permission,user,size,name "
+alias la="lsd -la --blocks permission,user,size,name "
+alias su="sudo su "
+alias open="xdg-open "
+
+if [ $USER = "selz" ] ; then alias pacman="pikaur " ; fi
+
+alias conf-env="vi ~/.config/zsh/.zshenv"
+alias conf-alias="vi ~/.config/zsh/alias"
+alias conf-zsh="vi ~/.config/zsh/.zshrc"
+alias conf-tmux="vi ~/.config/tmux/tmux.conf"
+alias conf-vim="vi ~/.config/nvim/init.vim"
+alias conf-vimiv="vi ~/.config/vimiv/keys.conf"
+alias conf-ranger="vi ~/.config/ranger/rc.conf"
+
+#thinkpad
+alias conf-bspwm="vi ~/.config/bspwm/bspwmrc"
+alias conf-sxhkd="vi ~/.config/sxhkd/sxhkdrc"
+alias conf-xinit="vi ~/.config/xorg/xinitrc"
+alias conf-xresources="vi ~/.config/xorg/xresources"
+alias conf-tint2="vi ~/.config/tint2/tint2rc"
+alias conf-picom="vi ~/.config/picom/picomrc"
+alias conf-dunst="vi ~/.config/dunst/dunstrc"
+alias conf-kitty="vi ~/.config/kitty/kitty.conf"
+
+
