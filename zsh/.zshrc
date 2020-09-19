@@ -79,7 +79,7 @@ source "/usr/share/doc/pkgfile/command-not-found.zsh"
 if [ -z $TMUX ] && [ $USER = "selz" ] ; then exec tmux; fi
 
 autoload -Uz compinit
-compinit -d ~/.config/zsh/.zcompdump
+compinit -d ~/.cache/zsh/.zcompdump
 kitty + complete setup zsh | source /dev/stdin
 setopt promptsubst
 
