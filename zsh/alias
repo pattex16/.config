@@ -5,12 +5,14 @@ alias py2="python2 "
 alias ipy="ipython "
 alias :q='exit'
 alias rm="rm -i "
-# alias ls="lsd "
-# alias l="lsd "
-# alias ll="lsd -l --blocks permission,user,size,name "
-# alias la="lsd -la --blocks permission,user,size,name "
+alias ls="lsd "
+alias l="lsd "
+alias lt="lsd --tree"
+alias ll="lsd -l --blocks permission,name "
+alias la="lsd -la --blocks permission,name "
 # alias su="sudo su "
-alias open="xdg-open "
+alias htop="sudo htop "
+# alias open="xdg-open "
 
 # if [ $USER = "selz" ] ; then alias pacman="pikaur " ; fi
 

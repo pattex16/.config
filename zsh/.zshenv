@@ -26,3 +26,6 @@ export ICEAUTHORITY="$HOME/.cache/libice/iceauthority"
 # export XAUTHORITY="$HOME/.config/xorg/xauthority"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/settings.ini" 
 export IPYTHONDIR="$HOME/.config/ipython"
+
+export INTLTOOL_PERL=perl
+export DISPLAY=":1"
