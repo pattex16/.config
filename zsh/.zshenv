@@ -10,6 +10,10 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 export LESSHISTFILE="$HOME/.cache/less/less.hist"
 
+export FLOATING=false
+
+# export ZDOTDIR="$HOME/.config/zsh"
+export QT_STYLE_OVERRIDE=kvantum
 export RUSTUP_HOME="$HOME/.config/rustup"
 export GNUPGHOME="$HOME/.config/gnupg"
 export WINEPREFIX="$HOME/.local/wine"
@@ -24,5 +28,7 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$HOME/.config/java"
 export HISTFILE="$HOME/.cache/bash/bash.hist"
 export ICEAUTHORITY="$HOME/.cache/libice/iceauthority"
 # export XAUTHORITY="$HOME/.config/xorg/xauthority"
-export GTK2_RC_FILES="$HOME/.config/gtk-2.0/settings.ini" 
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/settings.ini"
+
+# export GTK_MODULES=topmenu-gtk-module
 export IPYTHONDIR="$HOME/.config/ipython"

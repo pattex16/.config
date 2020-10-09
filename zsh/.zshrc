@@ -15,7 +15,35 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 _comp_options+=(globdots)
 zstyle ':completion::complete:*' gain-privileges 1
-# eval $(navi widget zsh)
+autoload -Uz compinit
+autoload bashcompinit
+bashcompinit
+compinit -d ~/.cache/zsh/zcompdump
+setopt promptsubst
+setopt correctall
+export CORRECT_IGNORE_FILE='.*'
+
+HISTFILE="$HOME/.cache/zsh/history"
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+
+setopt INC_APPEND_HISTORY
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+export HISTTIMEFORMAT="[%F %T] "
 
 _call_navi() {
   local selected
@@ -33,7 +61,6 @@ _call_navi() {
 
 zle -N _call_navi
 
-bindkey '^g' _call_navi
 
 setopt autocd
 stty stop undef
@@ -65,7 +92,8 @@ preexec() { echo -ne '\e[5 q' ;}
 
 bindkey -s '^o' 'ranger\n' 
 bindkey -s '^f' '$(fzf)\n'
-# bindkey -s '^g' 'navi\n'
+bindkey -s '^g' _call_navi
+bindkey -s '^h' 'sudo htop\n'
 
 #PLUGINS
 source ~/.config/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
@@ -73,20 +101,16 @@ source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source ~/.configre/zsh/plugins/zsh-autocomplete/zsh-autocomplete.zsh
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/plugins/zsh-github-cli-completion.zsh
+# source ~/.config/zsh/plugins/zsh-bspwm-completion.zsh
 # source ~/.config/zsh/plugins/zsh-ddgr-completion.zsh
 source "/usr/share/doc/pkgfile/command-not-found.zsh"
 
 if [ -z $TMUX ] && [ $USER = "selz" ] ; then exec tmux; fi
 
-autoload -Uz compinit
-compinit -d ~/.cache/zsh/.zcompdump
-kitty + complete setup zsh | source /dev/stdin
-setopt promptsubst
 
 local hostname_short=$(hostname | cut -c -5)
 
-if [ $USER = "root" ] ; then PROMPT='%B%F{red}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
-else ; PROMPT='%B%F{green}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
+if [ $USER = "root" ] ; then PROMPT=' %B%F{red}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
+else ; PROMPT=' %B%F{green}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
 fi ;
 
-export TERM="kitty"

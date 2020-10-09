@@ -50,7 +50,6 @@ wintypes:
         focus = true;
     };
 };
-#￼ * size-transition whether to
 
 #focused : {
 #    shadow = false;
@@ -76,12 +75,14 @@ blur: {
   kern = "3x3box";
 }
 blur-background-exclude = [
-  "class_g = 'Brave-browser'",
-  "class_g = 'GLava'"
+  "class_g = 'Chromium'",
+  "class_g = 'Plank'",
+  "class_g = 'Peek'",
+  "class_g = 'Xfce4-screenshooter'"
 ];
 
-menu          = { shadow = false; blur:false;};
-dropdown_menu = { shadow = false; blur:false;};
-popup_menu    = { shadow = false; blur:false;};
-utility       = { shadow = false; blur:false;};
+menu          = { shadow = false; blur = false;};
+dropdown_menu = { shadow = false; blur = false;};
+popup_menu    = { shadow = false; blur = false;};
+utility       = { shadow = false; blur = false;};
 

@@ -1,7 +1,10 @@
 #! /bin/sh
-
 pgrep -x sxhkd > /dev/null || sxhkd &
-pkill tint2
+
+bspc config top_padding 26
+bspc config left_padding 0
+bspc config right_padding 0
+bspc config bottom_padding 0
 
 bspc config focus_follows_pointer       true
 bspc config history_aware_focus         true
@@ -11,7 +14,7 @@ bspc config presel_feedback_color       "#8AB4F8"
 
 bspc monitor -d 1 2 3 4 5 6
 
-bspc config border_width         2
+bspc config border_width         3
 bspc config window_gap          12
 bspc config split_ratio          0.50
 bspc config borderless_monocle   false
@@ -21,12 +24,30 @@ bspc config gapless_monocle      false
 # bspc rule -a Chromium desktop='^2'
 # bspc rule -a mplayer2 state=floating
 # bspc rule -a Screenkey manage=off
-bspc rule -a Kupfer.py focus=on
 
-setbg &
-picom --experimental-backend --config ~/.config/picom/picomrc &
-tint2 &
+bspc rule -a Plank manage=on layer=above border=off marked=on
+bspc rule -a Peek focus=on state=floating center=on rectangle=800x600
+bspc rule -a Magnus focus=on state=floating center=on rectangle=800x600
+bspc rule -a Kupfer.py focus=on center=on
+bspc rule -a Xfce4-terminal:*:scratchpad sticky=on state=floating rectangle=1600x280+160+38
+
+export QT_STYLE_OVERRIDE=kvantum
+[[ -z $(pidof plank) ]] && pkill plank || plank &
+xsetroot -cursor_name left_ptr &
+setxkbmap -option "caps:escape" &
+xrdb -load ~/.config/xorg/xresources &
+xfdesktop & picom -b --config ~/.config/picom/picomrc --experimental &
+pkill xfce4-panel; xfce4-panel -d &
+xfce4-power-manager &
+libinput-gestures &
+start-pulseaudio-x11 &
+/usb/lib/xfce4/notifyd/xfce4-notifyd &
+pkill unclutter; unclutter --timeout 4 &
+light-locker &
+xset s 0 dpms 1200 1200 1200 &
+nm-applet &
+blueman-applet &
+pkill emoji-keyboard; emoji-keyboard &
 kupfer --no-splash &
-unclutter --timeout 4 --ignore-scrolling &
-i3-lock --image=~/.local/share/bg-blur -k
-dunst &
+# xfce4-terminal &
+# ~/.local/bin/bspwm/start-plank &
