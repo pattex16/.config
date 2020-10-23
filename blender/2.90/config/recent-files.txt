@@ -1,1 +1,0 @@
-/home/selz/.config/blender/2.90/config/config/startup.blend

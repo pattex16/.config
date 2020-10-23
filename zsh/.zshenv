@@ -13,6 +13,7 @@ export LESSHISTFILE="$HOME/.cache/less/less.hist"
 export FLOATING=false
 
 # export ZDOTDIR="$HOME/.config/zsh"
+export NODE_PATH="$HOME/.local/share/node"
 export QT_STYLE_OVERRIDE=kvantum
 export RUSTUP_HOME="$HOME/.config/rustup"
 export GNUPGHOME="$HOME/.config/gnupg"

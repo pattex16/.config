@@ -15,7 +15,7 @@ bspc config presel_feedback_color       "#8AB4F8"
 bspc monitor -d 1 2 3 4 5 6
 
 bspc config border_width         3
-bspc config window_gap          12
+bspc config window_gap           12
 bspc config split_ratio          0.50
 bspc config borderless_monocle   false
 bspc config gapless_monocle      false
@@ -32,22 +32,26 @@ bspc rule -a Kupfer.py focus=on center=on
 bspc rule -a Xfce4-terminal:*:scratchpad sticky=on state=floating rectangle=1600x280+160+38
 
 export QT_STYLE_OVERRIDE=kvantum
-[[ -z $(pidof plank) ]] && pkill plank || plank &
+[[ -z $(pidof plank) ]] && plank || pkill plank ; plank &
 xsetroot -cursor_name left_ptr &
 setxkbmap -option "caps:escape" &
 xrdb -load ~/.config/xorg/xresources &
-xfdesktop & picom -b --config ~/.config/picom/picomrc --experimental &
+xfdesktop & 
 pkill xfce4-panel; xfce4-panel -d &
 xfce4-power-manager &
+# xfce4-clipman &
 libinput-gestures &
 start-pulseaudio-x11 &
 /usb/lib/xfce4/notifyd/xfce4-notifyd &
 pkill unclutter; unclutter --timeout 4 &
 light-locker &
-xset s 0 dpms 1200 1200 1200 &
 nm-applet &
 blueman-applet &
 pkill emoji-keyboard; emoji-keyboard &
 kupfer --no-splash &
+picom --config ~/.config/picom/picomrc --experimental &
+
+# ~/.local/bin/bspwm/start-picom &
+# export NO_FIRST_RUN=true
 # xfce4-terminal &
 # ~/.local/bin/bspwm/start-plank &

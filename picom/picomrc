@@ -8,12 +8,11 @@
 backend = "glx";
 glx-no-stencil = false;
 glx-no-rebind-pixmap = false;
-xrender-sync-fence = true;
 inactive-opacity-override = false;
 vsync = true;
 dbe = false;
 detect-transient = true;
-detect-client-leader = true;
+# detect-client-leader = true;
 
 shadow = false;
 shadow-radius = 16;

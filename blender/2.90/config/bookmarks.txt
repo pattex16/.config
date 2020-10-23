@@ -1,5 +1,7 @@
 [Bookmarks]
 [Recent]
+/home/selz/Documents/Artwork/propic/
+/home/selz/Documents/Artwork/
 /usr/share/gimp/2.0/fonts/
 /tmp/
 /home/selz/Pictures/DCIM/Camera/
@@ -9,5 +11,3 @@
 /home/selz/Documents/Artwork/blender/
 /home/selz/Pictures/Random/
 /home/selz/Documents/Graphics/Marpio/
-/home/selz/Downloads/
-/home/selz/Pictures/Wallpapers/
