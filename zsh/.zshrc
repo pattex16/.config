@@ -76,7 +76,10 @@ source ~/.config/zsh/plugins/zsh-github-cli-completion.zsh
 # source ~/.config/zsh/plugins/zsh-ddgr-completion.zsh
 # source "/usr/share/doc/pkgfile/command-not-found.zsh"
 
-[[ -z $TMUX ]] && tmux
+if [[ $(whoami) = "u0_a219" ]];
+then
+  [[ -z $TMUX ]] && tmux
+fi
 
 autoload -Uz compinit
 compinit -d ~/.cache/zsh/.zcompdump
@@ -85,7 +88,7 @@ setopt promptsubst
 
 local hostname_short=$(hostname | cut -c -5)
 
-if [[ $USER = "root" ]]
+if [[ $(whoami) = "root" ]]
 then
   PROMPT='%B%F{red}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
 else
