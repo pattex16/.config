@@ -1,5 +1,5 @@
 #! /bin/sh
-pgrep -x sxhkd > /dev/null || sxhkd &
+# pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc config top_padding 26
 bspc config left_padding 0
@@ -49,7 +49,7 @@ nm-applet &
 blueman-applet &
 pkill emoji-keyboard; emoji-keyboard &
 kupfer --no-splash &
-picom --config ~/.config/picom/picomrc --experimental &
+picom --config ~/.config/picom/picomrc --experimental -d -b &
 
 # ~/.local/bin/bspwm/start-picom &
 # export NO_FIRST_RUN=true

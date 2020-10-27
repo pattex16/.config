@@ -9,6 +9,8 @@ set clipboard+=unnamedplus
 set number relativenumber
 set expandtab
 set smarttab
+set wrap
+set linebreak
 " set spell
 set shiftwidth=2
 set tabstop=2
@@ -88,10 +90,12 @@ Plug 'jreybert/vimagit'
 call plug#end()
 
 command W w! !sudo tee %
+"compila source c
+command C !gcc -lm % -o $(echo % | sed 's/..$//').out
 command Q q!
 autocmd VimLeave *.js,*.js,*.css,*.c,*.cpp,*.h,*.html,*.xml,*.java,*.js,*.json,*.go,*.py Autoformat
 " autocmd BufRead,BufNewFile *.txt silent! setlocal spell
-" autocmd BufWrite ~/.local/alias :! < ~/.local/alias | grep "alias conf-" | cut -c 6- | sed 's/ /$/1' > ~/.local/strings ;  
+" autocmd BufWrite ~/.local/alias :! < ~/.local/alias | grep 'alias conf-' | cut -c 6- | sed 's/ /$/1' > ~/.local/strings ;  
 noremap cf :Autoformat<CR>
 
 set signcolumn=no
