@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 # pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc config top_padding 26
@@ -25,19 +25,20 @@ bspc config gapless_monocle      false
 # bspc rule -a mplayer2 state=floating
 # bspc rule -a Screenkey manage=off
 
-bspc rule -a Plank manage=on layer=above border=off marked=on
+bspc rule -a Plank manage=off layer=above border=off marked=on focus=off locked=on sticky=on
 bspc rule -a Peek focus=on state=floating center=on rectangle=800x600
-bspc rule -a Magnus focus=on state=floating center=on rectangle=800x600
+bspc rule -a Emoji-keyboard focus=on state=floating center=on rectangle=600x400+1500+52
+bspc rule -a Magnus focus=on state=floating center=on rectangle=800x600+560+240
 bspc rule -a Kupfer.py focus=on center=on
+bspc rule -a Gnome-calculator focus=on center=on state=floating
 bspc rule -a Xfce4-terminal:*:scratchpad sticky=on state=floating rectangle=1600x280+160+38
+# bspc rule -a Xfce4-panel layer=below
 
 export QT_STYLE_OVERRIDE=kvantum
 [[ -z $(pidof plank) ]] && plank || pkill plank ; plank &
-xsetroot -cursor_name left_ptr &
 setxkbmap -option "caps:escape" &
 xrdb -load ~/.config/xorg/xresources &
 xfdesktop & 
-pkill xfce4-panel; xfce4-panel -d &
 xfce4-power-manager &
 # xfce4-clipman &
 libinput-gestures &
@@ -46,10 +47,14 @@ start-pulseaudio-x11 &
 pkill unclutter; unclutter --timeout 4 &
 light-locker &
 nm-applet &
+xfdesktop &
 blueman-applet &
 pkill emoji-keyboard; emoji-keyboard &
 kupfer --no-splash &
-picom --config ~/.config/picom/picomrc --experimental -d -b &
+xsetroot -cursor_name left_ptr &
+bspc config -d 1
+# picom --config ~/.config/picom/picomrc --experimental -d -b &
+# ~/.local/bin/start-picom
 
 # ~/.local/bin/bspwm/start-picom &
 # export NO_FIRST_RUN=true

@@ -91,7 +91,7 @@ call plug#end()
 
 command W w! !sudo tee %
 "compila source c
-command C !gcc -lm % -o $(echo % | sed 's/..$//').out
+command C !gcc -lm % ~/source/c/library/library.c -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out ; xfce4-terminal -e "zsh -c './$out; echo ; echo $out finished ; read'"
 command Q q!
 autocmd VimLeave *.js,*.js,*.css,*.c,*.cpp,*.h,*.html,*.xml,*.java,*.js,*.json,*.go,*.py Autoformat
 " autocmd BufRead,BufNewFile *.txt silent! setlocal spell

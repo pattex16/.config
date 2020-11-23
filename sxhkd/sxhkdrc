@@ -1,19 +1,31 @@
 #!/bin/sh
-super + {_,shift + } Return
- {xfce4-terminal,~/.local/bin/bspwm/scratchpad}
+# super + {_,shift + } Return
+#  {xfce4-terminal,~/.local/bin/bspwm/scratchpad}
 
-super + grave
-  ~/.local/bin/bspwm/next-desktop
+# super + grave
+#   ~/.local/bin/bspwm/next-desktop
 
-super + shift + grave
-  ~/.local/bin/bspwm/move-blank-desktop
+# super + shift + grave
+#   ~/.local/bin/bspwm/move-blank-desktop
 
+super + {_,shift + } grave
+  ~/.local/bin/bspwm/next-desktop-sticky-plank {next,prev}
+
+# super + shift + grave
+#   ~/.local/bin/bspwm/move-blank-desktop-sticky-plank
+
+# super + {_,shift + } Tab
+#   ~/.local/bin/bspwm/tab-cycle-window {next,prev}
+   
 super + {_,shift + } Tab
-  ~/.local/bin/bspwm/tab-cycle-window {next,prev}
+  bspc node -f {next,prev}.!hidden.window
+
+# super + {h,j,k,l}
+# 	~/.local/bin/bspwm/switch-window {west,south,north,east}
 
 super + {h,j,k,l}
-	~/.local/bin/bspwm/switch-window {west,south,north,east}
-
+	bspc node -f {west,south,north,east}
+  
 super + shift + {h,j,k,l}
   ~/.local/bin/bspwm/move-window {left,down,up,right}
 
@@ -73,14 +85,26 @@ super + b
 super + Escape
 	pkill -USR1 -x sxhkd
 
-super + {1-4}
-  jumpapp {chromium,thunar,xfce4-terminal,mousepad}
+super + {s,e,a}
+  jumpapp {chromium,thunar,mousepad}
 
-super + shift + {1-4}
-  /usr/bin/{chromium,thunar,xfce4-terminal,mousepad}
+super + backslash
+  ~/.local/bin/bspwm/scratchpad
 
-super + {_,shift + }bracket{left,right}
-	bspc {desktop -f,node -d} {prev,next}.local
+super + shift + {s,e,a}
+  /usr/bin/{chromium,thunar,mousepad}
+
+super + Return
+  /usr/bin/xfce4-terminal
+
+super + shift + Return
+  jumpapp xfce4-terminal
+
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+super + shift + bracket{left,right}
+  bspc node -d {prev,next}.local --follow;
 
 super + alt + {q,r}
 	bspc {quit,wm -r}
@@ -88,8 +112,8 @@ super + alt + {q,r}
 super + g
 	bspc node -s biggest.window
 
-super + {_,shift + }{5-9,0}
-	bspc {desktop -f,node -d} '^{1-5,6}'
+super + {_,shift + }{1-6}
+	bspc {desktop -f,node -d} '^{1-6}'
 
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
@@ -103,7 +127,7 @@ super + alt + {h,j,k,l}
   , d1=bottom; d2=top;    dx=0;   dy=$n;  \
   , d1=top;    d2=bottom; dx=0;   dy=-$n; \
   , d1=right;  d2=left;   dx=$n;  dy=0;   \
-  } \
+  }\
   bspc node --resize $d1 $dx $dy || bspc node --resize $d2 $dx $dy
 
 super + alt + shift + {l,k,j,h}
