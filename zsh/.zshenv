@@ -1,5 +1,7 @@
 #!/bin/zsh
 export PATH=$PATH:$HOME/.local/share/cargo/bin:$HOME/.local/bin
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -14,8 +16,11 @@ export FLOATING=false
 
 # export ZDOTDIR="$HOME/.config/zsh"
 export NODE_PATH="$HOME/.local/share/node"
+export PYLINTHOME="$HOME/.cache/pylint"
+export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
 export QT_STYLE_OVERRIDE=kvantum
 export RUSTUP_HOME="$HOME/.config/rustup"
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export GNUPGHOME="$HOME/.config/gnupg"
 export WINEPREFIX="$HOME/.local/wine"
 export WGETRC="$HOME/.config/wget/wgetrc"

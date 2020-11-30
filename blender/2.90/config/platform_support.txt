@@ -2,3 +2,4 @@
 {Intel/Mesa Intel(R) UHD Graphics 620 (KBL GT2)/4.6 (Core Profile) Mesa 20.1.8}=SUPPORTED
 {Intel/Mesa Intel(R) UHD Graphics 620 (KBL GT2)/4.6 (Core Profile) Mesa 20.2.0}=SUPPORTED
 {Intel/Mesa Intel(R) UHD Graphics 620 (KBL GT2)/4.6 (Core Profile) Mesa 20.2.1}=SUPPORTED
+{Intel/Mesa Intel(R) UHD Graphics 620 (KBL GT2)/4.6 (Core Profile) Mesa 20.2.2}=SUPPORTED
