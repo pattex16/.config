@@ -78,7 +78,10 @@ blur-background-exclude = [
   "class_g = 'Chromium'",
   "class_g = 'Plank'",
   "class_g = 'Peek'",
-  "class_g = 'Xfce4-screenshooter'"
+  "class_g = 'Xfce4-screenshooter'",
+  "class_g = 'gnome-pie-629'",
+  "class_g = 'gnome-pie-298'",
+  "class_g = 'gnome-pie-848'"
 ];
 
 menu          = { shadow = false; blur = false;};

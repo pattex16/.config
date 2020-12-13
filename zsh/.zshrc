@@ -92,7 +92,7 @@ preexec() { echo -ne '\e[5 q' ;}
 
 bindkey -s '^o' 'ranger\n' 
 bindkey -s '^f' '$(fzf)\n'
-bindkey -s '^g' _call_navi
+bindkey -s '^g' '_call_navi\n'
 bindkey -s '^h' 'sudo htop\n'
 
 #PLUGINS
