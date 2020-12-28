@@ -12,6 +12,7 @@ alias la="lsd -la --blocks permission,user,size,name "
 alias su="sudo su "
 alias open="xdg-open "
 alias yay="pikaur "
+alias yarn="yarn --use-yarnrc $HOME/.config/yarn/yarnrc"
 # if [ $USER = "selz" ] ; then alias pacman="pikaur " ; fi
 
 alias conf-env="vi ~/.config/zsh/.zshenv"

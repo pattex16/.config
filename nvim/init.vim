@@ -81,19 +81,22 @@ nnoremap <S-b> :call ToggleBar()<CR>
 call plug#begin('$HOME/.local/share/nvim/site/autoload/plug.nvim')
 Plug 'terryma/vim-multiple-cursors'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-snippets',
 Plug 'ap/vim-css-color'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdtree'
 Plug 'Chiel92/vim-autoformat'
+Plug 'https://github.com/homembaixinho/p5.vim'
 Plug 'jreybert/vimagit'
 call plug#end()
 
 command W w! !sudo tee %
 "compila source c
-command C !gcc -lm % ~/source/c/library/library.c -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out ; xfce4-terminal -e "zsh -c './$out; echo ; echo $out finished ; read'"
-command GCC !gcc -lm % ~/source/c/library/library.c -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out
+command C !gcc -lm % ~/source/c/library/library.c -pthread -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out ; tmux new-window "zsh -c './$out; echo ; echo $out finished ; read'"
+command GCC !gcc -lm % ~/source/c/library/library.c -pthread -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out
 command P !out=$(echo %); xfce4-terminal -e "zsh -c 'python3 $out; echo ; echo $out finished ; read'"
+command H !xdg-open ./index.html
 command Q q!
 autocmd VimLeave *.js,*.js,*.css,*.c,*.cpp,*.h,*.html,*.xml,*.java,*.js,*.json,*.go,*.py Autoformat
 " autocmd BufRead,BufNewFile *.txt silent! setlocal spell

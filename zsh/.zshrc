@@ -93,7 +93,7 @@ preexec() { echo -ne '\e[5 q' ;}
 bindkey -s '^o' 'ranger\n' 
 bindkey -s '^f' '$(fzf)\n'
 bindkey -s '^g' '_call_navi\n'
-bindkey -s '^h' 'sudo htop\n'
+bindkey -s '^t' 'sudo htop\n'
 
 #PLUGINS
 source ~/.config/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh

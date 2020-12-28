@@ -1,5 +1,5 @@
-#!/bin/sh
-# pgrep -x sxhkd > /dev/null || sxhkd &
+#!/bin/bash
+pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc config top_padding 26
 bspc config left_padding 0
@@ -36,12 +36,20 @@ bspc rule -a Florence sticky=on state=floating rectangle=1600x400+160+660 focus=
 # bspc rule -a Xfce4-panel layer=below
 
 export QT_STYLE_OVERRIDE=kvantum
+
+if [[ $1 -gt 0 ]];
+then
 [[ -z $(pidof plank) ]] && plank || pkill plank ; plank &
-setxkbmap -option "caps:escape" &
+else
+  xfce4-terminal & plank &
+fi
+
+# setxkbmap -option "caps:escape" &
+xfce4-panel -d -r&
 xrdb -load ~/.config/xorg/xresources &
 xfdesktop & 
 xfce4-power-manager &
-# xfce4-clipman &
+xfce4-clipman &
 libinput-gestures &
 start-pulseaudio-x11 &
 /usb/lib/xfce4/notifyd/xfce4-notifyd &

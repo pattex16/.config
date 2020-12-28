@@ -1,5 +1,5 @@
 #!/bin/zsh
-export PATH=$PATH:$HOME/.local/share/cargo/bin:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/share/cargo/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin/:$HOME/.local/share/npm/bin
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -16,8 +16,10 @@ export FLOATING=false
 
 # export ZDOTDIR="$HOME/.config/zsh"
 export NODE_PATH="$HOME/.local/share/node"
+export NODE_REPL_HISTORY="$HOME/.cache/node/history"
 export PYLINTHOME="$HOME/.cache/pylint"
 export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
+export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_STYLE_OVERRIDE=kvantum
 export RUSTUP_HOME="$HOME/.config/rustup"
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle

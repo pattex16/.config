@@ -109,6 +109,9 @@ super + shift + bracket{left,right}
 super + alt + {q,r}
 	bspc {quit,wm -r}
 
+super + alt + b
+  [[ -z $(pidof plank) ]] && plank || pkill plank ; plank &
+
 super + g
 	bspc node -s biggest.window
 
