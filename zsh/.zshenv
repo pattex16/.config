@@ -1,5 +1,5 @@
 #!/bin/zsh
-export PATH=$PATH:$HOME/.local/share/cargo/bin:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/share/cargo/bin:$HOME/.local/bin:$HOME/.local/bin/script
 
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'

@@ -3,7 +3,8 @@
 # / __|/ _ \ |_  /___|_  / __| '_ \ 
 # \__ \  __/ |/ /_____/ /\__ \ | | |
 # |___/\___|_/___|   /___|___/_| |_|
-                                  
+                                 
+tmux_user="u0_a219"
 source "$ZDOTDIR/alias"
 
 bindkey -v
@@ -95,5 +96,45 @@ else
   PROMPT='%B%F{green}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
 fi
 
-# export TERM="kitty"
+autoload -Uz compinit
+autoload bashcompinit
+bashcompinit
+compinit -d ~/.cache/zsh/zcompdump
+setopt promptsubst
+setopt correctall
+export CORRECT_IGNORE_FILE='.*'
+
+HISTFILE="$HOME/.cache/zsh/history"
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+
+setopt INC_APPEND_HISTORY
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+export HISTTIMEFORMAT="[%F %T] "
+bindkey -s '^t' 'sudo htop\n'
+
+precmd () {
+  if [ $(whoami) = "root" ]; then
+    #thinkpad
+    # echo $tmux_user -c "tmux rename-window 'root@$hostname_short' ;tmux set-window-option window-status-current-style 'fg=black bg=red';     tmux set-window-option window-status-style 'fg=red'"
+  else
+    tmux rename-window $(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)
+    tmux set-window-option window-status-current-style 'fg=black bg=#8AB4F8'
+    tmux set-window-option window-status-style 'fg=#8AB4F8'
+  fi
+}
 
