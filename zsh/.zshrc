@@ -110,7 +110,14 @@ if [ -z $TMUX ] && [ $USER = "selz" ] ; then exec tmux; fi
 
 local hostname_short=$(hostname | cut -c -5)
 
+local dir=$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)
+
 if [ $USER = "root" ] ; then PROMPT=' %B%F{red}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
 else ; PROMPT=' %B%F{green}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
 fi ;
 
+precmd () {
+    tmux rename-window $(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)
+    tmux set-window-option window-status-current-style 'fg=black bg=#8AB4F8'
+    tmux set-window-option window-status-style 'fg=#8AB4F8'
+}
