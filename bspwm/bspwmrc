@@ -50,6 +50,7 @@ xrdb -load ~/.config/xorg/xresources &
 xfdesktop & 
 xfce4-power-manager &
 xfce4-clipman &
+xfce4-screensaver &
 libinput-gestures &
 start-pulseaudio-x11 &
 /usb/lib/xfce4/notifyd/xfce4-notifyd &

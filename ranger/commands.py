@@ -60,3 +60,5 @@ class my_edit(Command):
         # This is a generic tab-completion function that iterates through the
         # content of the current directory.
         return self._tab_directory_content()
+
+os.system("tmux set-window-option window-status-current-style 'fg=black bg=green'; tmux set-window-option window-status-style 'fg=green'")
