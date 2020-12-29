@@ -1,5 +1,5 @@
 #!/bin/zsh
-export PATH=$PATH:$HOME/.local/share/cargo/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin/:$HOME/.local/share/npm/bin
+export PATH=$PATH:$HOME/.local/share/cargo/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin/:$HOME/.local/share/npm/bin:$HOME/.local/bin/script
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 

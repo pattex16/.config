@@ -1,48 +1,48 @@
 #!/bin/sh
 # super + {_,shift + } Return
-#  {xfce4-terminal,~/.local/bin/bspwm/scratchpad}
+#  {xfce4-terminal,~/.local/bin/script/bspwm/scratchpad}
 
 # super + grave
-#   ~/.local/bin/bspwm/next-desktop
+#   ~/.local/bin/script/bspwm/next-desktop
 
 # super + shift + grave
-#   ~/.local/bin/bspwm/move-blank-desktop
+#   ~/.local/bin/script/bspwm/move-blank-desktop
 
 super + {_,shift + } grave
-  ~/.local/bin/bspwm/next-desktop-sticky-plank {next,prev}
+  ~/.local/bin/script/bspwm/next-desktop-sticky-plank {next,prev}
 
 # super + shift + grave
-#   ~/.local/bin/bspwm/move-blank-desktop-sticky-plank
+#   ~/.local/bin/script/bspwm/move-blank-desktop-sticky-plank
 
 # super + {_,shift + } Tab
-#   ~/.local/bin/bspwm/tab-cycle-window {next,prev}
+#   ~/.local/bin/script/bspwm/tab-cycle-window {next,prev}
    
 super + {_,shift + } Tab
   bspc node -f {next,prev}.!hidden.window
 
 # super + {h,j,k,l}
-# 	~/.local/bin/bspwm/switch-window {west,south,north,east}
+# 	~/.local/bin/script/bspwm/switch-window {west,south,north,east}
 
 super + {h,j,k,l}
 	bspc node -f {west,south,north,east}
   
 super + shift + {h,j,k,l}
-  ~/.local/bin/bspwm/move-window {left,down,up,right}
+  ~/.local/bin/script/bspwm/move-window {left,down,up,right}
 
 super + f
-  ~/.local/bin/bspwm/node-monocle
+  ~/.local/bin/script/bspwm/node-monocle
 
 super + shift + F
-  ~/.local/bin/bspwm/node-fullscreen
+  ~/.local/bin/script/bspwm/node-fullscreen
 
 super + d
-  ~/.local/bin/bspwm/node-floating
+  ~/.local/bin/script/bspwm/node-floating
 
 super + v
-  ~/.local/bin/bspwm/show-clipman
+  ~/.local/bin/script/bspwm/show-clipman
 
 super + {_,shift + }q
-	~/.local/bin/bspwm/quit-node {c,k}
+	~/.local/bin/script/bspwm/quit-node {c,k}
 
 ##
 
@@ -89,7 +89,7 @@ super + {s,e,a}
   jumpapp {chromium,thunar,mousepad}
 
 super + backslash
-  ~/.local/bin/bspwm/scratchpad
+  ~/.local/bin/script/bspwm/scratchpad
 
 super + shift + {s,e,a}
   /usr/bin/{chromium,thunar,mousepad}
