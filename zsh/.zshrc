@@ -4,6 +4,8 @@
 # \__ \  __/ |/ /_____/ /\__ \ | | |
 # |___/\___|_/___|   /___|___/_| |_|
                                   
+
+tmux_user="selz"
 source "$ZDOTDIR/alias"
 
 bindkey -v
@@ -117,7 +119,12 @@ else ; PROMPT=' %B%F{green}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/
 fi ;
 
 precmd () {
+  if [ $USER = "root" ]; then
+    #thinkpad
+    su $tmux_user -c "tmux rename-window 'root@$hostname_short' ;tmux set-window-option window-status-current-style 'fg=black bg=red';     tmux set-window-option window-status-style 'fg=red'"
+  else
     tmux rename-window $(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)
     tmux set-window-option window-status-current-style 'fg=black bg=#8AB4F8'
     tmux set-window-option window-status-style 'fg=#8AB4F8'
+  fi
 }
