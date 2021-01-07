@@ -23,14 +23,18 @@ filetype plugin on
 set spelllang=en,it
 
 "bracket completion
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+"inoremap " ""<left>
+"inoremap ' ''<left>
+"inoremap ( ()<left>
+"inoremap [ []<left>
+"inoremap { {}<left>
+"inoremap {<CR> {<CR>}<ESC>O
+"inoremap {;<CR> {<CR>};<ESC>O
 
+noremap } $
+noremap { _
+noremap + <C-a>
+noremap _ <C-x>
 noremap x "_x
 noremap g/ :noh<CR>
 noremap j gj
@@ -47,6 +51,7 @@ noremap H b
 noremap L w
 noremap J <C-d>
 noremap K <C-u>
+noremap F :Autoformat<CR>
 map Q gq
 nnoremap <C-b> :call ToggleBar()<CR>
 
@@ -62,13 +67,14 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'jreybert/vimagit'
 Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 command W w! !sudo tee %
 "compila source c
-command C !gcc -lm % ~/source/c/library/library.c -pthread -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out ; tmux new-window "zsh -c './$out; echo ; echo $out finished ; read'"
+command C !gcc -lm % ~/source/c/library/library.c -pthread -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out ; tmux split-window "zsh -c './$out; echo ; echo $out finished ; read'"
 command GCC !gcc -lm % ~/source/c/library/library.c -pthread -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out
-command P !out=$(echo %); xfce4-terminal -e "zsh -c 'python3 $out; echo ; echo $out finished ; read'"
+command P !out=$(echo %); tmux split-window "zsh -c 'python3 $out; echo ; echo $out finished ; read'"
 command H !xdg-open ./index.html
 command Q q!
 autocmd VimLeave *.js,*.js,*.css,*.c,*.cpp,*.h,*.html,*.xml,*.java,*.js,*.json,*.go,*.py Autoformat
@@ -97,6 +103,14 @@ let g:NERDTreeDirArrowCollapsible = ''
 " let g:airline#extensions#tabline#formatter = 'default'
 
 
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
+
+
 function! HideBar()
   let s:Hidden = 1
   set noshowmode
@@ -122,4 +136,5 @@ function! ToggleBar()
 endfunction
 
 :call HideBar()
+
 

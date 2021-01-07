@@ -133,7 +133,7 @@ class cd(Command):
     The command 'cd -' is equivalent to typing ``.
     Using the option "-r" will get you to the real path.
     """
-
+    
     def execute(self):
         if self.arg(1) == '-r':
             self.shift()
@@ -974,6 +974,9 @@ class eval_(Command):
     def execute(self):
         # The import is needed so eval() can access the ranger module
         import ranger  # NOQA pylint: disable=unused-import,unused-variable
+
+        # os.system("tmux set-window-option window-status-current-style 'fg=black bg=green'; tmux set-window-option window-status-style 'fg=green'")
+
         if self.arg(1) == '-q':
             code = self.rest(2)
             quiet = True

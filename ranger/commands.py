@@ -28,6 +28,7 @@ class my_edit(Command):
 
     # The execute method is called when you run this command in ranger.
     def execute(self):
+
         # self.arg(1) is the first (space-separated) argument to the function.
         # This way you can write ":my_edit somefilename<ENTER>".
         if self.arg(1):
@@ -60,5 +61,6 @@ class my_edit(Command):
         # This is a generic tab-completion function that iterates through the
         # content of the current directory.
         return self._tab_directory_content()
+
 
 os.system("tmux set-window-option window-status-current-style 'fg=black bg=green'; tmux set-window-option window-status-style 'fg=green'")

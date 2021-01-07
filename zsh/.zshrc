@@ -123,8 +123,10 @@ precmd () {
     #thinkpad
     su $tmux_user -c "tmux rename-window 'root@$hostname_short' ;tmux set-window-option window-status-current-style 'fg=black bg=red';     tmux set-window-option window-status-style 'fg=red'"
   else
-    tmux rename-window $(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)
-    tmux set-window-option window-status-current-style 'fg=black bg=#8AB4F8'
-    tmux set-window-option window-status-style 'fg=#8AB4F8'
+    if [[ -n $TMUX ]]; then
+      tmux rename-window $(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)
+      tmux set-window-option window-status-current-style 'fg=black bg=#8AB4F8'
+      tmux set-window-option window-status-style 'fg=#8AB4F8'
+    fi
   fi
 }
