@@ -16,7 +16,7 @@ set shiftwidth=2
 set tabstop=2
 set ignorecase
 set splitbelow splitright
-set shortmess=a
+set shortmess=at
 syntax on
 filetype plugin on
 "let g:python3_host_prog="/data/data/com.termux/files/usr/bin/python3"
@@ -72,6 +72,7 @@ call plug#end()
 
 command W w! !sudo tee %
 "compila source c
+command Comp !gcc *.c -pthread -o ./main.out ; tmux split-window "zsh -c '$(dirname %)/main.out ; echo finished ; read'"
 command C !gcc -lm % ~/source/c/library/library.c -pthread -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out ; tmux split-window "zsh -c './$out; echo ; echo $out finished ; read'"
 command GCC !gcc -lm % ~/source/c/library/library.c -pthread -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out
 command P !out=$(echo %); tmux split-window "zsh -c 'python3 $out; echo ; echo $out finished ; read'"

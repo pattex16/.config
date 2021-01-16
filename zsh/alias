@@ -15,6 +15,9 @@ alias yay="pikaur "
 alias yarn="yarn --use-yarnrc $HOME/.config/yarn/yarnrc"
 # if [ $USER = "selz" ] ; then alias pacman="pikaur " ; fi
 
+alias gitp="git push origin master"
+alias gita="git commit -a"
+
 alias conf-env="vi ~/.config/zsh/.zshenv"
 alias conf-alias="vi ~/.config/zsh/alias"
 alias conf-zsh="vi ~/.config/zsh/.zshrc"
@@ -22,6 +25,7 @@ alias conf-tmux="vi ~/.config/tmux/tmux.conf"
 alias conf-vim="vi ~/.config/nvim/init.vim"
 alias conf-vimiv="vi ~/.config/vimiv/keys.conf"
 alias conf-ranger="vi ~/.config/ranger/rc.conf"
+alias conf-script="clear; cd ~/.local/bin/script; ranger"
 alias conf-library="vi ~/source/c/library/library.c -o ~/source/c/library/library.h "
 
 #thinkpad
