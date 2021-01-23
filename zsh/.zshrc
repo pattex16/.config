@@ -1,9 +1,9 @@
-#           _                 _     
-#  ___  ___| |____    _______| |__  
-# / __|/ _ \ |_  /___|_  / __| '_ \ 
+#           _                 _
+#  ___  ___| |____    _______| |__
+# / __|/ _ \ |_  /___|_  / __| '_ \
 # \__ \  __/ |/ /_____/ /\__ \ | | |
 # |___/\___|_/___|   /___|___/_| |_|
-                                  
+
 
 tmux_user="selz"
 hostname_short=$(hostname | cut -c -5)
@@ -69,21 +69,21 @@ stty stop undef
 
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
+    [[ $1 = 'block' ]]; then
+      echo -ne '\e[1 q'
 
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
+    elif [[ ${KEYMAP} == main ]] ||
+      [[ ${KEYMAP} == viins ]] ||
+      [[ ${KEYMAP} = '' ]] ||
+      [[ $1 = 'beam' ]]; then
+          echo -ne '\e[5 q'
   fi
 }
 zle -N zle-keymap-select
 
 zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
+zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+echo -ne "\e[5 q"
 }
 zle -N zle-line-init
 
@@ -92,7 +92,7 @@ echo -ne '\e[5 q'
 # Use beam shape cursor for each new prompt.
 preexec() { echo -ne '\e[5 q' ;}
 
-bindkey -s '^o' 'ranger\n' 
+bindkey -s '^o' 'ranger\n'
 bindkey -s '^f' '$(fzf)\n'
 bindkey -s '^g' '_call_navi\n'
 bindkey -s '^t' 'sudo htop\n'
@@ -107,9 +107,12 @@ source ~/.config/zsh/plugins/zsh-github-cli-completion.zsh
 
 if [ -z $TMUX ] && [ $USER = "selz" ] ; then exec tmux; fi
 
-if [ $USER = "root" ] ; then PROMPT=' %B%F{red}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(pwdShort $PWD $HOME)%b%f%# '
-else ; PROMPT=' %B%F{green}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(pwdShort $PWD $HOME)%b%f%# '
-fi ;
+if [ $USER = "root" ] ; then
+  PROMPT=' %B%F{red}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(pwdShort $PWD $HOME)%b%f%# '
+else
+  PROMPT=' %B%F{green}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(pwdShort $PWD $HOME)%b%f%# '
+fi
+
 
 precmd () {
   if [ $USER = "root" ]; then

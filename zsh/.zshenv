@@ -41,3 +41,6 @@ export GTK2_RC_FILES="$HOME/.config/gtk-2.0/settings.ini"
 
 # export GTK_MODULES=topmenu-gtk-module
 export IPYTHONDIR="$HOME/.config/ipython"
+
+export SPOTIPY_CLIENT_ID=82d78243adc84e1d8ccc369c07feedeb
+export SPOTIPY_CLIENT_SECRET=cfb4d098e3a7442387688f572e7fdc02
