@@ -3,6 +3,7 @@ export PATH=$PATH:$HOME/.local/share/cargo/bin:$HOME/.local/bin:$HOME/.gem/ruby/
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 
+export HISTFILE="$HOME/.cache/zsh/history"
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'

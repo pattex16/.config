@@ -49,9 +49,9 @@ noremap ; :
 noremap <C-;> q:
 noremap H b
 noremap L w
-noremap J <C-d>
-noremap K <C-u>
-noremap F :Autoformat<CR>
+" noremap J <C-d>
+" noremap K <C-u>
+noremap M :w<CR>:make<CR>
 map Q gq
 nnoremap <C-b> :call ToggleBar()<CR>
 
@@ -68,13 +68,17 @@ Plug 'jreybert/vimagit'
 Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'mbbill/undotree'
+Plug 'tpope/vim-abolish'
 call plug#end()
 
 command W w! !sudo tee %
-"compila source c
-command Comp !gcc *.c -pthread -o ./main.out ; tmux split-window "zsh -c '$(dirname %)/main.out ; echo finished ; read'"
-command C !gcc -lm % ~/source/c/library/library.c -pthread -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out ; tmux split-window "zsh -c './$out; echo ; echo $out finished ; read'"
-command GCC !gcc -lm % ~/source/c/library/library.c -pthread -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out
+
+"compila source c in maniera scema
+" command Comp !gcc *.c -pthread -o ./main.out ; tmux split-window "zsh -c '$(dirname %)/main.out ; echo finished ; read'"
+" command C !gcc -lm $(pwd)/lib/*.c % -o $(echo % | sed 's/..$//').out ; out=$(echo % | sed 's/..$//').out ;  tmux split-window "zsh -c './$out; echo ; echo $out finished ; read'"
+" command GCC !gcc -lm % ~/source/c/library/library.c -pthread -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out
+"
 command P !out=$(echo %); tmux split-window "zsh -c 'python3 $out; echo ; echo $out finished ; read'"
 command H !xdg-open ./index.html
 command Q q!
@@ -93,6 +97,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " autocmd VimEnter,VimLeave * :silent !tmux set status
 let NERDTreeShowHidden=1
 noremap <C-o> :NERDTreeToggle<CR>
+noremap <C-u> :UndotreeToggle<CR>
+noremap F :Autoformat<CR>
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 

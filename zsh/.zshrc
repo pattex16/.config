@@ -6,6 +6,7 @@
                                   
 
 tmux_user="selz"
+hostname_short=$(hostname | cut -c -5)
 source "$ZDOTDIR/alias"
 
 bindkey -v
@@ -25,7 +26,6 @@ setopt promptsubst
 setopt correctall
 export CORRECT_IGNORE_FILE='.*'
 
-HISTFILE="$HOME/.cache/zsh/history"
 HISTSIZE=10000000
 SAVEHIST=10000000
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
@@ -96,35 +96,28 @@ bindkey -s '^o' 'ranger\n'
 bindkey -s '^f' '$(fzf)\n'
 bindkey -s '^g' '_call_navi\n'
 bindkey -s '^t' 'sudo htop\n'
+bindkey '^R' history-incremental-search-backward
 
 #PLUGINS
+source "/usr/share/doc/pkgfile/command-not-found.zsh"
 source ~/.config/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source ~/.configre/zsh/plugins/zsh-autocomplete/zsh-autocomplete.zsh
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/plugins/zsh-github-cli-completion.zsh
-# source ~/.config/zsh/plugins/zsh-bspwm-completion.zsh
-# source ~/.config/zsh/plugins/zsh-ddgr-completion.zsh
-source "/usr/share/doc/pkgfile/command-not-found.zsh"
 
 if [ -z $TMUX ] && [ $USER = "selz" ] ; then exec tmux; fi
 
-
-local hostname_short=$(hostname | cut -c -5)
-
-local dir=$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)
-
-if [ $USER = "root" ] ; then PROMPT=' %B%F{red}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
-else ; PROMPT=' %B%F{green}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)%b%f%# '
+if [ $USER = "root" ] ; then PROMPT=' %B%F{red}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(pwdShort $PWD $HOME)%b%f%# '
+else ; PROMPT=' %B%F{green}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(pwdShort $PWD $HOME)%b%f%# '
 fi ;
 
 precmd () {
   if [ $USER = "root" ]; then
     #thinkpad
-    su $tmux_user -c "tmux rename-window 'root@$hostname_short' ;tmux set-window-option window-status-current-style 'fg=black bg=red';     tmux set-window-option window-status-style 'fg=red'"
+    # su $tmux_user -c "tmux rename-window 'root@$hostname_short' ;tmux set-window-option window-status-current-style 'fg=black bg=red';     tmux set-window-option window-status-style 'fg=red'"
   else
     if [[ -n $TMUX ]]; then
-      tmux rename-window $(~/.config/zsh/plugins/pwd-shorten/pwd-shorten.py)
+      tmux rename-window "$(pwdShort $PWD $HOME)"
       tmux set-window-option window-status-current-style 'fg=black bg=#8AB4F8'
       tmux set-window-option window-status-style 'fg=#8AB4F8'
     fi
