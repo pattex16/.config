@@ -4,22 +4,24 @@
 "\__ \  __/ |/ /_____| | | \ V /| | | | | | |
 "|___/\___|_/___|    |_| |_|\_/ |_|_| |_| |_|
 "
+
+"basic nvim custom
 set mouse=a
 set clipboard+=unnamedplus
-set number ""relativenumber
+set number "relativenumber
 set expandtab
 set smarttab
 set wrap
 set linebreak
-" set spell
 set shiftwidth=2
 set tabstop=2
 set ignorecase
 set splitbelow splitright
 set shortmess=at
+set signcolumn=no
 syntax on
 filetype plugin on
-"let g:python3_host_prog="/data/data/com.termux/files/usr/bin/python3"
+set spell
 set spelllang=en,it
 
 "bracket completion
@@ -31,6 +33,7 @@ set spelllang=en,it
 "inoremap {<CR> {<CR>}<ESC>O
 "inoremap {;<CR> {<CR>};<ESC>O
 
+"standard remasps
 noremap } $
 noremap { _
 noremap + <C-a>
@@ -51,11 +54,13 @@ noremap H b
 noremap L w
 " noremap J <C-d>
 " noremap K <C-u>
-noremap M :w<CR>:make<CR>
 map Q gq
-nnoremap <C-b> :call ToggleBar()<CR>
 
-"Plug
+"user functions remaps
+nnoremap <C-b> :call ToggleBar()<CR>
+noremap M :w<CR>:make<CR>
+
+"plugins
 call plug#begin('$HOME/.local/share/nvim/site/autoload/plug.nvim')
 Plug 'terryma/vim-multiple-cursors'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -72,51 +77,39 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-abolish'
 call plug#end()
 
+"save and exit as root
 command W w! !sudo tee %
+command Q q!
 
-"compila source c in maniera scema
-" command Comp !gcc *.c -pthread -o ./main.out ; tmux split-window "zsh -c '$(dirname %)/main.out ; echo finished ; read'"
-" command C !gcc -lm $(pwd)/lib/*.c % -o $(echo % | sed 's/..$//').out ; out=$(echo % | sed 's/..$//').out ;  tmux split-window "zsh -c './$out; echo ; echo $out finished ; read'"
-" command GCC !gcc -lm % ~/source/c/library/library.c -pthread -o $(echo % | sed 's/..$//').out; out=$(echo % | sed 's/..$//').out
-"
 command P !out=$(echo %); tmux split-window "zsh -c 'python3 $out; echo ; echo $out finished ; read'"
 command H !xdg-open ./index.html
-command Q q!
+
+"autocmd
 autocmd VimLeave *.js,*.js,*.css,*.c,*.cpp,*.h,*.html,*.xml,*.java,*.js,*.json,*.go,*.py Autoformat
 autocmd VimEnter,BufWrite,BufNewFile,BufRead,BufReadPost,FileReadPost,BufNewFile * call system("tmux set-window-option window-status-current-style 'fg=black bg=yellow';tmux set-window-option window-status-style 'fg=yellow'")
 autocmd VimEnter,BufWrite,BufNewFile,BufRead,BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . expand("%:t"))
 " autocmd BufRead,BufNewFile *.txt silent! setlocal spell
-" autocmd BufWrite ~/.local/alias :! < ~/.local/alias | grep 'alias conf-' | cut -c 6- | sed 's/ /$/1' > ~/.local/strings ;  
-noremap cf :Autoformat<CR>
-noremap gp :P<CR>
 
-set signcolumn=no
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
-" autocmd VimEnter,VimLeave * :silent !tmux set status
 let NERDTreeShowHidden=1
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
+
+"plugin remaps
+
 noremap <C-o> :NERDTreeToggle<CR>
 noremap <C-u> :UndotreeToggle<CR>
+inoremap <silent><expr> <c-space> coc#refresh()
 noremap F :Autoformat<CR>
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
 
-" hi TabLine      ctermfg=Black  ctermbg=Yellow     cterm=NONE
-" hi TabLineFill  ctermfg=Black  ctermbg=NONE     cterm=NONE
-" hi TabLineSel   ctermfg=White  ctermbg=11  cterm=NONE
-
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#formatter = 'default'
-
-
+"tmux remaps
+" autocmd VimEnter,VimLeave * :silent !tmux set status
 let g:tmux_navigator_no_mappings = 1
-
 nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
 
+"simple user functions
 
 function! HideBar()
   let s:Hidden = 1
