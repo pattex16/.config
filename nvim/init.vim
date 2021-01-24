@@ -21,7 +21,7 @@ set shortmess=at
 set signcolumn=no
 syntax on
 filetype plugin on
-set spell
+" set spell
 set spelllang=en,it
 
 "bracket completion
