@@ -54,6 +54,8 @@ noremap H b
 noremap L w
 " noremap J <C-d>
 " noremap K <C-u>
+map J j
+map K k
 map Q gq
 
 "user functions remaps

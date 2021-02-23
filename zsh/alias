@@ -1,8 +1,8 @@
 #vi:syntax=sh
-alias ra="ranger "
 alias py="python "
 alias py2="python2 "
-alias ipy="ipython "
+alias py3="python3 "
+alias ipy="ipython -i -c 'from math import *'"
 alias :q='exit'
 alias rm="rm -i "
 alias ls="lsd "
@@ -11,7 +11,7 @@ alias ll="lsd -l --blocks user,size,name "
 alias la="lsd -la --blocks user,size,name "
 alias su="tmux rename-window 'root@$hostname_short' ;tmux set-window-option window-status-current-style 'fg=black bg=red';     tmux set-window-option window-status-style 'fg=red' ; sudo su"
 alias open="xdg-open "
-alias yay="pikaur "
+# alias yay="pikaur "
 alias yarn="yarn --use-yarnrc $HOME/.config/yarn/yarnrc"
 # if [ $USER = "selz" ] ; then alias pacman="pikaur " ; fi
 
@@ -20,6 +20,7 @@ alias gita="git commit -a"
 
 alias conf-env="vi ~/.config/zsh/.zshenv"
 alias conf-alias="vi ~/.config/zsh/alias"
+alias conf-profile="vi ~/.config/zsh/.zprofile"
 alias conf-zsh="vi ~/.config/zsh/.zshrc"
 alias conf-tmux="vi ~/.config/tmux/tmux.conf"
 alias conf-vim="vi ~/.config/nvim/init.vim"
@@ -42,4 +43,20 @@ alias conf-dunst="vi ~/.config/dunst/dunstrc"
 alias conf-zathura="vi ~/.config/zathura/zathurarc"
 alias conf-kitty="vi ~/.config/kitty/kitty.conf"
 
+function ranger-cd {
+    local IFS=$'\t\n'
+    local tempfile="$(mktemp -t tmp.XXXXXX)"
+    local ranger_cmd=(
+        command
+        ranger
+        --cmd="map Q chain shell echo %d > "$tempfile"; quitall!"
+    )
 
+    ${ranger_cmd[@]} "$@"
+    if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
+        cd -- "$(cat "$tempfile")" || return
+    fi
+    command rm -f -- "$tempfile" 2>/dev/null
+}
+
+alias ra="ranger-cd "
