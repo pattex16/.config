@@ -101,7 +101,7 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 #PLUGINS
-source "/usr/share/doc/pkgfile/command-not-found.zsh"
+[ -e "/usr/share/doc/pkgfile/command-not-found.zsh" ] && source "/usr/share/doc/pkgfile/command-not-found.zsh"
 source ~/.config/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
