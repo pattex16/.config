@@ -1,6 +1,6 @@
 #!/bin/sh
-# super + {_,shift + } Return
-#  {xfce4-terminal,~/.local/bin/script/bspwm/scratchpad}
+super + {_,shift + } Return
+ {gnome-terminal,~/.local/bin/script/bspwm/scratchpad}
 
 # super + grave
 #   ~/.local/bin/script/bspwm/next-desktop

@@ -44,29 +44,23 @@ else
   xfce4-terminal & plank &
 fi
 
-# setxkbmap -option "caps:escape" &
-xfce4-panel -d -r&
-xrdb -load ~/.config/xorg/xresources &
-xfdesktop & 
-xfce4-power-manager &
-xfce4-clipman &
-xfce4-screensaver &
-libinput-gestures &
-start-pulseaudio-x11 &
-/usb/lib/xfce4/notifyd/xfce4-notifyd &
-pkill unclutter; unclutter --timeout 4 &
-light-locker &
-nm-applet &
-xfdesktop &
-blueman-applet &
-pkill emoji-keyboard; emoji-keyboard &
+setxkbmap -option "caps:escape" &
+#xfce4-panel -d -r&
+#xrdb -load ~/.config/xorg/xresources &
+#xfdesktop & 
+#xfce4-power-manager &
+#xfce4-clipman &
+#xfce4-screensaver &
+#libinput-gestures &
+#start-pulseaudio-x11 &
+#/usb/lib/xfce4/notifyd/xfce4-notifyd &
+#pkill unclutter; unclutter --timeout 4 &
+#light-locker &
+#nm-applet &
+#xfdesktop &
+#blueman-applet &
+#pkill emoji-keyboard; emoji-keyboard &
 kupfer --no-splash &
 xsetroot -cursor_name left_ptr &
 bspc config -d 1
 picom --config ~/.config/picom/picomrc --experimental -d -b &
-# ~/.local/bin/start-picom
-
-# ~/.local/bin/bspwm/start-picom &
-# export NO_FIRST_RUN=true
-# xfce4-terminal &
-# ~/.local/bin/bspwm/start-plank &

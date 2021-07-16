@@ -130,7 +130,7 @@ precmd () {
   
   COLOR="#3f51b5"
   
-  if [ $(hostname) == "thinkpad" ]; then
+  if [[ $(hostname) == "thinkpad" ]]; then
     COLOR="#8AB4F8"
   fi
 
