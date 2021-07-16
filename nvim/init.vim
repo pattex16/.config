@@ -4,7 +4,6 @@
 "\__ \  __/ |/ /_____| | | \ V /| | | | | | |
 "|___/\___|_/___|    |_| |_|\_/ |_|_| |_| |_|
 "
-
 set mouse=a
 set clipboard+=unnamedplus
 set number "relativenumber
@@ -117,6 +116,7 @@ let g:autoformat_autoindent = 2
 let g:autoformat_retab = 2
 let g:autoformat_remove_trailing_spaces = 0
 
+let g:coc_disable_startup_warning = 1
 
 let g:rainbow#max_level = 16
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
