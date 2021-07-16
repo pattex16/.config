@@ -109,13 +109,9 @@ source ~/.config/zsh/plugins/zsh-github-cli-completion.zsh
 
 run_tmux=true
 
-if [ $# -ge 1 ];
+if [ $(hostname) = "vultr" ];
 then
-  if [ $1 == "--no-tmux" ];
-  then
-    set $run_tmux false
-  else
-  fi
+  set $run_tmux false
 fi
 
 if [ $run_tmux = true ];
@@ -130,16 +126,22 @@ else
   PROMPT=' %B%F{green}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(pwdShort $PWD $HOME)%b%f%# '
 fi
 
-
 precmd () {
+  
+  COLOR="#3f51b5"
+  
+  if [ $(hostname) = "thinkpad" ]; then
+    COLOR="#8AB4F8"
+  fi
+
   if [ $USER = "root" ]; then
     #thinkpad
     # su $tmux_user -c "tmux rename-window 'root@$hostname_short' ;tmux set-window-option window-status-current-style 'fg=black bg=red';     tmux set-window-option window-status-style 'fg=red'"
   else
     if [[ -n $TMUX ]]; then
       tmux rename-window "$(pwdShort $PWD $HOME)"
-      tmux set-window-option window-status-current-style 'fg=black bg=#8AB4F8'
-      tmux set-window-option window-status-style 'fg=#8AB4F8'
+      tmux set-window-option window-status-current-style "fg=black bg=$COLOR"
+      tmux set-window-option window-status-style "fg=$COLOR"
     fi
   fi
 }

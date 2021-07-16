@@ -3,6 +3,8 @@
 source "$HOME/.config/zsh/.zprofile"
 source "$HOME/.local/privatenv"
 
+export PATH=$PATH:$HOME/.local/bin/script:$HOME/.local/bin/joke
+
 export HISTFILE="$HOME/.cache/zsh/history"
 export LESS_TERMCAP_mb=$'\E[02;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'

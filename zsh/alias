@@ -13,10 +13,12 @@ alias su="tmux rename-window 'root@$hostname_short' ;tmux set-window-option wind
 # alias yay="pikaur "
 alias yarn="yarn --use-yarnrc $HOME/.config/yarn/yarnrc"
 alias jshell="jsh "
+
+alias vultr="ssh selz@95.179.179.23 "
 # if [ $USER = "selz" ] ; then alias pacman="pikaur " ; fi
 
 alias gitp="git push origin master"
-alias gitp="git commit -a"
+alias gitc="git commit -a"
 
 alias minecraft-server="cd $HOME/.local/share/minecraft-server-bukkit ; ./launch.sh"
 
