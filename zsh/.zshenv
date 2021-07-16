@@ -4,6 +4,7 @@ source "$HOME/.config/zsh/.zprofile"
 [ -e "$HOME/.local/privatenv" ] && source "$HOME/.local/privatenv"
 
 export PATH=$PATH:$HOME/.local/bin/script:$HOME/.local/bin/joke
+export EDITOR=nvim
 
 export HISTFILE="$HOME/.cache/zsh/history"
 export LESS_TERMCAP_mb=$'\E[02;31m'
