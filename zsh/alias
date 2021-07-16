@@ -16,7 +16,7 @@ alias jshell="jsh "
 # if [ $USER = "selz" ] ; then alias pacman="pikaur " ; fi
 
 alias gitp="git push origin master"
-alias gita="git commit -a"
+alias gitp="git commit -a"
 
 alias minecraft-server="cd $HOME/.local/share/minecraft-server-bukkit ; ./launch.sh"
 
