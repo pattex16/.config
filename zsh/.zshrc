@@ -92,11 +92,13 @@ echo -ne '\e[5 q'
 # Use beam shape cursor for each new prompt.
 preexec() { echo -ne '\e[5 q' ;}
 
-bindkey -s '^o' 'ranger\n'
+bindkey -s '^o' 'ra\n'
 bindkey -s '^f' '$(fzf)\n'
 bindkey -s '^g' '_call_navi\n'
 bindkey -s '^t' 'sudo htop\n'
 bindkey '^R' history-incremental-search-backward
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
 
 #PLUGINS
 source "/usr/share/doc/pkgfile/command-not-found.zsh"
@@ -105,7 +107,22 @@ source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/plugins/zsh-github-cli-completion.zsh
 
-if [ -z $TMUX ] && [ $USER = "selz" ] ; then exec tmux; fi
+run_tmux=true
+
+if [ $# -ge 1 ];
+then
+  if [ $1 == "--no-tmux" ];
+  then
+    set $run_tmux false
+  else
+  fi
+fi
+
+if [ $run_tmux = true ];
+then
+  if [ -z $TMUX ] && [ $USER = "selz" ] ; then exec tmux; fi
+fi
+
 
 if [ $USER = "root" ] ; then
   PROMPT=' %B%F{red}%n%f%b@%B%F{blue}$hostname_short%f%b:%F{yellow}%B$(pwdShort $PWD $HOME)%b%f%# '

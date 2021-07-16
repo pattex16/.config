@@ -2,21 +2,23 @@
 alias py="python "
 alias py2="python2 "
 alias py3="python3 "
-alias ipy="ipython -i -c 'from math import *'"
+alias ipy="ipython -i "
 alias :q='exit'
 alias rm="rm -i "
-alias ls="lsd "
-alias l="lsd "
-alias ll="lsd -l --blocks user,size,name "
-alias la="lsd -la --blocks user,size,name "
+alias ls="lsd --group-dirs=first"
+alias l="lsd --group-dirs=first"
+alias ll="lsd --group-dirs=first -l --blocks user,size,name "
+alias la="lsd --group-dirs=first -la --blocks user,size,name "
 alias su="tmux rename-window 'root@$hostname_short' ;tmux set-window-option window-status-current-style 'fg=black bg=red';     tmux set-window-option window-status-style 'fg=red' ; sudo su"
-alias open="xdg-open "
 # alias yay="pikaur "
 alias yarn="yarn --use-yarnrc $HOME/.config/yarn/yarnrc"
+alias jshell="jsh "
 # if [ $USER = "selz" ] ; then alias pacman="pikaur " ; fi
 
 alias gitp="git push origin master"
 alias gita="git commit -a"
+
+alias minecraft-server="cd $HOME/.local/share/minecraft-server-bukkit ; ./launch.sh"
 
 alias conf-env="vi ~/.config/zsh/.zshenv"
 alias conf-alias="vi ~/.config/zsh/alias"
@@ -25,6 +27,7 @@ alias conf-zsh="vi ~/.config/zsh/.zshrc"
 alias conf-tmux="vi ~/.config/tmux/tmux.conf"
 alias conf-vim="vi ~/.config/nvim/init.vim"
 alias conf-vimiv="vi ~/.config/vimiv/keys.conf"
+alias conf-fusuma="pkill fusuma; vi ~/.config/fusuma/config.yml; nohup fusuma > /dev/null 2>&1 &"
 alias conf-ranger="vi ~/.config/ranger/rc.conf"
 alias conf-script="clear; cd ~/.local/bin/script; ranger"
 alias conf-library="vi ~/source/c/library/library.c -o ~/source/c/library/library.h "
@@ -49,7 +52,7 @@ function ranger-cd {
     local ranger_cmd=(
         command
         ranger
-        --cmd="map Q chain shell echo %d > "$tempfile"; quitall!"
+        --cmd="map q chain shell echo %d > "$tempfile"; quitall!"
     )
 
     ${ranger_cmd[@]} "$@"
