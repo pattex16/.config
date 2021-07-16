@@ -76,6 +76,7 @@ else
 "
 call plug#begin('$HOME/.local/share/nvim/site/autoload/plug.nvim')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-snippets'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'ap/vim-css-color'
