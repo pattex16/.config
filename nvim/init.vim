@@ -76,8 +76,6 @@ else
 "
 call plug#begin('$HOME/.local/share/nvim/site/autoload/plug.nvim')
 Plug 'terryma/vim-multiple-cursors'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-snippets',
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-commentary'
@@ -95,7 +93,6 @@ call plug#end()
 
 noremap <C-o> :NERDTreeToggle<CR>
 noremap <C-u> :UndotreeToggle<CR>
-inoremap <silent><expr> <c-space> coc#refresh()
 noremap <C-F> :Autoformat<CR>
 inoremap <C-/> :Commentary<CR>
 noremap <C-/> :Commentary<CR>
@@ -115,8 +112,6 @@ let g:NERDTreeDirArrowCollapsible = ''
 let g:autoformat_autoindent = 2
 let g:autoformat_retab = 2
 let g:autoformat_remove_trailing_spaces = 0
-
-let g:coc_disable_startup_warning = 1
 
 let g:rainbow#max_level = 16
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
