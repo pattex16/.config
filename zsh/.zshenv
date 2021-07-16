@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 source "$HOME/.config/zsh/.zprofile"
-source "$HOME/.local/privatenv"
+[ -e "$HOME/.local/privatenv" ] && source "$HOME/.local/privatenv"
 
 export PATH=$PATH:$HOME/.local/bin/script:$HOME/.local/bin/joke
 
