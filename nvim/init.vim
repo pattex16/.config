@@ -75,6 +75,7 @@ else
 "plugin remaps
 "
 call plug#begin('$HOME/.local/share/nvim/site/autoload/plug.nvim')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'ap/vim-css-color'
@@ -112,6 +113,9 @@ let g:NERDTreeDirArrowCollapsible = ''
 let g:autoformat_autoindent = 2
 let g:autoformat_retab = 2
 let g:autoformat_remove_trailing_spaces = 0
+
+inoremap <silent><expr> <c-space> coc#refresh()
+"let g:coc
 
 let g:rainbow#max_level = 16
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
