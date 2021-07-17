@@ -3,7 +3,7 @@
 source "$HOME/.config/zsh/.zprofile"
 [ -e "$HOME/.local/privatenv" ] && source "$HOME/.local/privatenv"
 
-export PATH=$PATH:$HOME/.local/bin/script:$HOME/.local/bin/joke
+export PATH=$PATH:$HOME/.local/bin/script:$HOME/.local/bin/joke:$HOME/.gem/ruby/3.0.0/bin
 
 export HISTFILE="$HOME/.cache/zsh/history"
 export LESS_TERMCAP_mb=$'\E[02;31m'
